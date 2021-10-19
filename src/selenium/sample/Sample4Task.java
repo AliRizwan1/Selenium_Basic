@@ -38,16 +38,50 @@ public class Sample4Task {
     public void enterNumber() throws Exception {
 //         TODO:
 //        enter a number under "Number"
+        WebElement num = driver.findElement(By.id("number"));
+        num.clear();
+        num.sendKeys("56");
 //        check that button is not clickable "Clear Result"
-//        check that text is not displayed
-//        click on "Result" button
-//        check that text is displayed
-//        check that the correct Text appears ("You entered number: "NUMBER YOU ENTERED"")
-//        check that the button "Clear Result" is clickable now
-//        click on "Clear Result"
-//        check that the text is still (""), but it is not displayed
-    }
+        WebElement btn = driver.findElement(By.id("clear_result_button_number"));
+        assertTrue(btn.isEnabled());
 
+//        check that text is not displayed
+        WebElement tf = driver.findElement(By.id("result_number"));
+        var i = tf.getText();
+        boolean j;
+        if(i.equals("")){
+             j = true;
+        }else {
+             j = false;
+        }
+        assertTrue(j);
+//        click on "Result" button
+        WebElement resultBtn = driver.findElement(By.id("result_button_number"));
+        resultBtn.click();
+//        check that text is displayed
+         i = tf.getText();
+        if(i.equals("")){
+            j = true;
+        }else {
+            j = false;
+        }
+        assertTrue(j);
+
+//        check that the correct Text appears ("You entered number: "NUMBER YOU ENTERED"")
+        if(tf.getText().equals("You entered number: 56")){
+            j = true;
+        }else {
+            j = false;
+        }
+        assertTrue(j);
+//        check that the button "Clear Result" is clickable now
+        assertTrue(btn.isEnabled());
+//        click on "Clear Result"
+        btn.click();
+//        check that the text is still (""), but it is not displayed
+
+    }
+// still to doooooo!!!!!!!!!!!!!!!!
     @Test
     public void clickOnLink() throws Exception {
 //         TODO:
