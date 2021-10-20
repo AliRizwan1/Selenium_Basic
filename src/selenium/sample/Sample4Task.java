@@ -43,7 +43,7 @@ public class Sample4Task {
         num.sendKeys("56");
 //        check that button is not clickable "Clear Result"
         WebElement btn = driver.findElement(By.id("clear_result_button_number"));
-        assertTrue(btn.isEnabled());
+        assertFalse(btn.isEnabled());
 
 //        check that text is not displayed
         WebElement tf = driver.findElement(By.id("result_number"));
@@ -59,16 +59,10 @@ public class Sample4Task {
         WebElement resultBtn = driver.findElement(By.id("result_button_number"));
         resultBtn.click();
 //        check that text is displayed
-         i = tf.getText();
-        if(i.equals("")){
-            j = true;
-        }else {
-            j = false;
-        }
-        assertTrue(j);
+
 
 //        check that the correct Text appears ("You entered number: "NUMBER YOU ENTERED"")
-        if(tf.getText().equals("You entered number: 56")){
+        if(tf.getText().equals("You entered number: \"56\"")){
             j = true;
         }else {
             j = false;
